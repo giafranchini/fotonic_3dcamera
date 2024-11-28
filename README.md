@@ -1,5 +1,5 @@
 # fotonic_3dcamera
-ROS driver for the Fotonic E-Series 3D cameras
+ROS2 driver for the Fotonic E-Series 3D cameras
 
 # Available params
 
