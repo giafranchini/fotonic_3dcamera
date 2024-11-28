@@ -24,8 +24,8 @@
 #define CMD_DE_SENSOR_START                 0x4001
 #define CMD_DE_SENSOR_STOP                  0x4002
 #define CMD_DE_RESET                        0x4023
-#define CMD_DE_COLOR_SENSOR_START			0x4045
-#define CMD_DE_COLOR_SENSOR_STOP			0x4046
+#define CMD_DE_COLOR_SENSOR_START                       0x4045
+#define CMD_DE_COLOR_SENSOR_STOP                        0x4046
 
 #define CMD_DE_STREAM_ON                    0x4047
 #define CMD_DE_STREAM_OFF                   0x4048
@@ -46,13 +46,13 @@
 #pragma pack(2)
 typedef struct
 {
-	uint16_t shutter_nr;   //1 based index (currently shutter 1 or 2). must always be set
-	uint16_t shutter_time; //millisec * 10. must be set for CMD_DE_SET_SHUTTER_EXT, is returned for CMD_DE_GET_SHUTTER_EXT
+  uint16_t shutter_nr;         //1 based index (currently shutter 1 or 2). must always be set
+  uint16_t shutter_time;       //millisec * 10. must be set for CMD_DE_SET_SHUTTER_EXT, is returned for CMD_DE_GET_SHUTTER_EXT
 } SHUTTER; //defined here to be used in FZ_SHUTTER_EXT only
 typedef struct
 {
-	uint16_t num_shutters; //must always be set
-	SHUTTER shutters[2];
+  uint16_t num_shutters;       //must always be set
+  SHUTTER shutters[2];
 } FZ_SHUTTER_EXT; //defines format of SHUTTER_EXT commands
 #pragma pack()
 
@@ -68,10 +68,10 @@ typedef struct
 #define CMD_DE_SET_SMF_FILTER               0x410A //device type Primesense: ignored
 #define CMD_DE_SET_FILTER_CONTROL            0x410B //device type Primesense: ignored
 #define CMD_DE_SET_BRIGHTNESS_THRESHOLD     0x410C //device type Primesense: ignored
-#define CMD_DE_SET_BRIGHTNESS_STRETCH		0x410D //device type Primesense: ignored
-#define CMD_DE_SET_MEDIAN_FILTER			0x410E //device type Primesense: ignored
+#define CMD_DE_SET_BRIGHTNESS_STRETCH           0x410D //device type Primesense: ignored
+#define CMD_DE_SET_MEDIAN_FILTER                        0x410E //device type Primesense: ignored
 #define CMD_DE_SET_LIGHT_PWR                0x502D //only device type PA
-#define CMD_DE_SET_LSSWITCH					0x4006 //only device type PA
+#define CMD_DE_SET_LSSWITCH                                     0x4006 //only device type PA
 
 //get operation parameters
 #define CMD_DE_GET_SHUTTER                  0x5001
@@ -85,7 +85,6 @@ typedef struct
 #define CMD_DE_GET_FPS_DIVISOR              0x502A
 #define CMD_DE_GET_LIGHT_FRQ                0x502B //only device type PA
 #define CMD_DE_GET_LIGHT_PWR                0x502C //only device type PA
-
 
 
 //get version/serial number information
@@ -110,7 +109,7 @@ typedef struct
 #define CMD_DE_GET_SMF_FILTER               0x510A //device type Primesense: fails
 #define CMD_DE_GET_FILTER_CONTROL           0x510B //device type Primesense: fails
 #define CMD_DE_GET_BRIGHTNESS_THRESHOLD     0x510C //device type Primesense: ignored
-#define CMD_DE_GET_BRIGHTNESS_STRETCH		0x510D //device type Primesense: ignored
+#define CMD_DE_GET_BRIGHTNESS_STRETCH           0x510D //device type Primesense: ignored
 #define CMD_DE_GET_MEDIAN_FILTER            0x510E //device type Primesense: ignored
 
 // Dual sensor commands
@@ -154,11 +153,11 @@ typedef struct
 #define DE_MODE_320X240_60                  0x18
 #define DE_MODE_640X480_30                  0x19
 //primesense_c
-#define DE_MODE_320X240_320X240				0x20
-#define DE_MODE_320X240_640X480				0x21
-#define DE_MODE_640X480_320X240				0x22
-#define DE_MODE_640X480_640X480				0x23
-#define DE_MODE_320X240_1280X960			0x24
-#define DE_MODE_640X480_1280X960			0x25
+#define DE_MODE_320X240_320X240                         0x20
+#define DE_MODE_320X240_640X480                         0x21
+#define DE_MODE_640X480_320X240                         0x22
+#define DE_MODE_640X480_640X480                         0x23
+#define DE_MODE_320X240_1280X960                        0x24
+#define DE_MODE_640X480_1280X960                        0x25
 
 #endif
