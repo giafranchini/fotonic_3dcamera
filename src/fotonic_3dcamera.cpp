@@ -91,7 +91,7 @@ Camera3D::Camera3D(const rclcpp::NodeOptions & options)
   RCLCPP_INFO(get_logger(), "Frame: %s", fotonic_frame_id_.c_str());
 
   // TODO(giafranchini): atm we leave the publishers name as they are, then we could think about uniform them
-  fotonic_3Ddata_pub_ = create_publisher<sensor_msgs::msg::PointCloud2>("point_cloud", 1);
+  fotonic_3Ddata_pub_ = create_publisher<sensor_msgs::msg::PointCloud2>("point_cloud2", 1);
   // image_pub_ = create_publisher<sensor_msgs::msg::Image>("image", 1);
   // image_depth_pub_ = create_publisher<sensor_msgs::msg::Image>("image_depth", 1);
   camera_info_pub_ = create_publisher<sensor_msgs::msg::CameraInfo>("ir/camera_info", 1);
