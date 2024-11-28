@@ -17,19 +17,18 @@
 
 /*********************************************************
 *
-* Robotnik - adaption for ROS
+* Robotnik - adaption for ROS2
 *
 **********************************************************/
 
 // Robotnik hack
 // #include <windows.h>
 
-#include <stdio.h>
-#include <math.h>
-#include "ros/ros.h"
+#include <cmath>
+#include <cstring>
+#include <iostream>
+
 #include "fotonic_3dcamera/camera.h"
-#include <string.h>  // added for memset
-#include <ros/ros.h>
 
 
 // Robotnik hack
@@ -103,7 +102,6 @@ C_FZCamera::~C_FZCamera()
 
   // Robotnik
   FZ_Result result = FZ_Exit();
-  ROS_INFO("C_FZCamera destructor : FZ_Exit returned %d", (int) result);
 }
 
 // Robotnik
@@ -138,8 +136,6 @@ int C_FZCamera::Enumerate()
 
   // find connected sensors
   FZ_Result iResult = FZ_EnumDevices2(m_aDeviceInfo, &m_iNumDevices);
-
-  //ROS_INFO("m_aDeviceInfo[1] szPath %s  szSerial %s", m_aDeviceInfo[1].szPath, m_aDeviceInfo[1].szSerial);
 
   if (iResult == FZ_TOO_MANY_DEVICES) {iResult = FZ_Success;}
   if (iResult != FZ_Success || m_iNumDevices < 1) {
@@ -185,7 +181,6 @@ bool C_FZCamera::SetActive(char * szDevicePath)
   iResult = FZ_Open(szDevicePath, 0, &m_hDevice);
 
   if (iResult != FZ_Success) {
-    ROS_ERROR("C_FZCamera::SetActive - Could not open device (code 0x%x)!", iResult);
     m_hDevice = 0;
     return false;
   }
@@ -287,8 +282,6 @@ bool C_FZCamera::SetActive(char * szDevicePath)
 //		&iRespCode, NULL, NULL);
 
   if (iResultIoctl != (int)FZ_Success) {
-    ROS_ERROR("C_FZCamera::SetActive - Some error occured during the sensor open process");
-    ROS_ERROR("C_FZCamera::SetActive - The camera might not work as expected.");
     //no special action is taken here due to the error
   }
   StatisticsWOI((m_iCols / 2) - (14 / 2), (m_iRows / 2) - (14 / 2), 14, 14); //default
@@ -467,7 +460,6 @@ bool C_FZCamera::Start()
 
   FZ_CmdRespCode_t resp;
   if (FZ_IOCtl(m_hDevice, CMD_DE_SENSOR_START, NULL, 0, &resp, NULL, NULL) != FZ_Success) {
-    ROS_ERROR("C_FZCamera::Start  - Start sensor failed");
     return false;
   }
 
