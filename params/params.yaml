@@ -1,0 +1,28 @@
+fotonic_3dcamera:
+  ros__parameters:
+    ip_address: "192.268.1.10"
+    base_frame_id: "base_link"
+    fotonic_frame_id: "fotonic_link_optical"
+    # Sensor parameters
+    sensor_shutter_ms: 10.0
+    sensor_framerate: 40
+    sensor_framerate_divisor: 1
+    # Hardware filters
+    lerp_filter_enable: false
+    edge_filter_enable: true
+    edge_filter_minB: 1
+    edge_filter_diff1: 10
+    edge_filter_diff2: 10
+    edge_filter_diff3: 20
+    # Software filters
+    active_brightness_min: 100
+    active_brightness_max: 4095
+    z_range_min: 150
+    z_range_max: 8000
+    pre_zfilterx_enable: false
+    pre_zfiltery_enable: false
+    pre_zfilter_depth: 150
+    noise_filter_enable: false
+    noise_filter_radius: 10
+    noise_filter_depth: 10
+    noise_filter_pixels: 20
